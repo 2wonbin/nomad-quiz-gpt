@@ -64,6 +64,12 @@ st.set_page_config(
 st.title("QuizGPT")
 
 with st.sidebar:
+    st.link_button(
+        "Github로 이동",
+        url="https://github.com/2wonbin/nomad-quiz-gpt",
+        help="해당 프로젝트의 깃허브 레포지토리로 이동합니다.",
+        use_container_width=True,
+    )
     user_api_key = st.text_input("API Key")
 if not user_api_key:
     st.warning("API Key가 필요합니다.")
@@ -181,6 +187,7 @@ def wiki_search(topic):
 
 with st.sidebar:
     docs = None
+
     if user_api_key != "":
         choice = st.selectbox(
             "Choose a document",
@@ -201,12 +208,6 @@ with st.sidebar:
             if topic:
                 docs = wiki_search(topic)
 
-    st.link_button(
-        "Github",
-        url="https://github.com/2wonbin/nomad-quiz-gpt",
-        help="해당 프로젝트의 깃허브 레포지토리로 이동합니다.",
-        use_container_width=True,
-    )
 
 if not docs:
     st.markdown(
